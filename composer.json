@@ -1,0 +1,23 @@
+{
+    "name": "glavweb/cms-content-block",
+    "description": "GLAVWEB.cms Content Block",
+    "authors": [
+        {
+            "name": "nilov",
+            "email": "nilov@glavweb.ru",
+            "homepage": "http://glavweb.ru"
+        },
+        {
+            "name": "GLAVWEB Community",
+            "homepage": "https://github.com/glavweb/cms-content-block/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "guzzlehttp/guzzle": "^6.0",
+        "glavweb/cms-rest-client": "~0.1"
+    },
+    "autoload": {
+        "psr-4": { "Glavweb\\CmsContentBlock\\": "" }
+    }
+}
