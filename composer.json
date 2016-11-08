@@ -18,6 +18,6 @@
         "glavweb/cms-rest-client": "~0.1"
     },
     "autoload": {
-        "psr-4": { "Glavweb\\CmsContentBlock\\": "" }
+        "psr-4": { "Glavweb\\CmsContentBlock\\": "src/" }
     }
 }

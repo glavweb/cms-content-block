@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Glavweb\CmsContentBlock;
+namespace Glavweb\CmsContentBlock\Service;
 
 use Psr\Http\Message\ResponseInterface;
 use Glavweb\CmsRestClient\CmsRestClient;
