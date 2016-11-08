@@ -40,11 +40,6 @@ class ContentBlockService
     private $restClient;
 
     /**
-     * @var array
-     */
-    private $contentBlocksCategoryCache = [];
-
-    /**
      * ContentBlockService constructor.
      *
      * @param CmsRestClient $restClient
@@ -98,6 +93,29 @@ class ContentBlockService
         }
 
         return $attributes;
+    }
+
+    /**
+     * Editable block
+     *
+     * @param string $category
+     * @param string $blockName
+     * @return string
+     */
+    public function editable($category, $blockName)
+    {
+        $attributes = $this->getContentBlockAttributes($category, $blockName);
+
+        $attributes['data-content-block']          = 'true';
+        $attributes['data-content-block-category'] = $category;
+        $attributes['data-content-block-name']     = $blockName;
+
+        $attrParts = array();
+        foreach ($attributes as $attrName => $attrValue) {
+            $attrParts[] = sprintf('%s="%s"', $attrName, $attrValue);
+        }
+
+        return ' ' . implode(' ', $attrParts);
     }
 
     /**
