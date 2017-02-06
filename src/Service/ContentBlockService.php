@@ -11,7 +11,6 @@
 
 namespace Glavweb\CmsContentBlock\Service;
 
-use Psr\Http\Message\ResponseInterface;
 use Glavweb\CmsRestClient\CmsRestClient;
 
 /**
@@ -20,34 +19,12 @@ use Glavweb\CmsRestClient\CmsRestClient;
  * @package Glavweb\CmsContentBlock
  * @author Andrey Nilov <nilov@glavweb.ru>
  */
-class ContentBlockService
+class ContentBlockService extends AbstractContentService
 {
-    /**
-     * Http status constants
-     */
-    const HTTP_OK              = 200;
-    const HTTP_CREATED         = 201;
-    const HTTP_PARTIAL_CONTENT = 206;
-
     /**
      * @var array
      */
     private static $contentBlocksCache = null;
-
-    /**
-     * @var CmsRestClient
-     */
-    private $restClient;
-
-    /**
-     * ContentBlockService constructor.
-     *
-     * @param CmsRestClient $restClient
-     */
-    public function __construct(CmsRestClient $restClient)
-    {
-        $this->restClient = $restClient;
-    }
 
     /**
      * @param string $category
@@ -219,24 +196,6 @@ class ContentBlockService
         $contentBlockItem = $this->getContentBlockByLocation($location);
 
         self::$contentBlocksCache[$category][$blockName] = $contentBlockItem;
-    }
-
-    /**
-     * @param ResponseInterface $response
-     * @return int
-     * @throws \Exception
-     */
-    private function getMaxResultByResponse(ResponseInterface $response)
-    {
-        $contentRange = $response->getHeader('Content-Range');
-
-        if (!isset($contentRange[0])) {
-            throw new \Exception('Header "Content-Range" is not returned from API.');
-        }
-
-        $maxResult = explode('/', $contentRange[0])[1];
-
-        return (int)$maxResult;
     }
 
     /**
