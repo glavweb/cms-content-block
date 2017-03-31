@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace Glavweb\CmsContentBlock\Service;
+namespace Glavweb\CmsContentBlock\Manager;
 
 use Psr\Http\Message\ResponseInterface;
 use Glavweb\CmsRestClient\CmsRestClient;
 
 /**
- * Class AbstractContentService
+ * Class AbstractContentManager
  *
  * @package Glavweb\CmsContentBlock
  * @author Andrey Nilov <nilov@glavweb.ru>
  */
-abstract class AbstractContentService
+abstract class AbstractContentManager
 {
     /**
      * Http status constants
@@ -35,7 +35,7 @@ abstract class AbstractContentService
     protected $restClient;
 
     /**
-     * ContentBlockService constructor.
+     * ContentBlockManager constructor.
      *
      * @param CmsRestClient $restClient
      */

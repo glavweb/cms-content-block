@@ -9,17 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Glavweb\CmsContentBlock\Service;
-
-use Glavweb\CmsRestClient\CmsRestClient;
+namespace Glavweb\CmsContentBlock\Manager;
 
 /**
- * Class ContentBlockService
+ * Class ContentBlockManager
  *
  * @package Glavweb\CmsContentBlock
  * @author Andrey Nilov <nilov@glavweb.ru>
  */
-class ContentBlockService extends AbstractContentService
+class ContentBlockManager extends AbstractContentManager
 {
     /**
      * @var array

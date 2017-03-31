@@ -9,18 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Glavweb\CmsContentBlock\Service;
-
-use Psr\Http\Message\ResponseInterface;
-use Glavweb\CmsRestClient\CmsRestClient;
+namespace Glavweb\CmsContentBlock\Manager;
 
 /**
- * Class OptionService
+ * Class OptionManager
  *
  * @package Glavweb\CmsContentBlock
  * @author Andrey Nilov <nilov@glavweb.ru>
  */
-class OptionService extends AbstractContentService
+class OptionManager extends AbstractContentManager
 {
     /**
      * @var array
