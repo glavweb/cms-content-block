@@ -43,7 +43,7 @@ class OptionManager extends AbstractContentManager
             $optionValue = $default;
 
         } else {
-            $optionValue = $option['value'];
+            $optionValue = isset($option['value']) ? $option['value'] : '';
         }
 
         return $optionValue;
