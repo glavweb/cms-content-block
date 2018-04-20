@@ -28,9 +28,10 @@ class ContentBlockManager extends AbstractContentManager
      * @param string $category
      * @param string $blockName
      * @param string $defaultContent
+     * @param bool $wysiwyg
      * @return string
      */
-    public function getContentBlock($category, $blockName, $defaultContent = null)
+    public function getContentBlock($category, $blockName, $defaultContent = null, $wysiwyg = false)
     {
         $contentBlocks = $this->getContentBlockListByCategory($category);
         $contentBlock  = isset($contentBlocks[$blockName]) ? $contentBlocks[$blockName] : null;
@@ -38,7 +39,7 @@ class ContentBlockManager extends AbstractContentManager
         // Create new block
         if ($contentBlock === null) {
             if ($defaultContent !== null) {
-                $this->createContentBlock($category, $blockName, $defaultContent);
+                $this->createContentBlock($category, $blockName, $defaultContent, $wysiwyg);
             }
 
             $contentBlockBody = (string)$defaultContent;
@@ -167,16 +168,18 @@ class ContentBlockManager extends AbstractContentManager
      * @param string $category
      * @param string $blockName
      * @param string $defaultContent
+     * @param bool $wysiwyg
      * @return string
      * @throws \Exception
      */
-    private function createContentBlock($category, $blockName, $defaultContent)
+    private function createContentBlock($category, $blockName, $defaultContent, $wysiwyg = false)
     {
         $response = $this->restClient->post('content-blocks', [
             'form_params' => [
                 'category' => $category,
                 'name'     => $blockName,
-                'body'     => $defaultContent
+                'body'     => $defaultContent,
+                'wysiwyg'  => (int)$wysiwyg
             ]
         ], true);
 
